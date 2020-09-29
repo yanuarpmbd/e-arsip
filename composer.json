@@ -63,6 +63,10 @@
         "hooks": {
             "type": "composer",
             "url": "https://larapack.io"
+        },
+        "": {
+            "type": "path",
+            "url": "hooks/"
         }
     }
 }
