@@ -188,13 +188,13 @@
                                                         @include('voyager::multilingual.input-hidden-bread-browse')
                                                         @if(json_decode($data->{$row->field}) !== null)
                                                             @foreach(json_decode($data->{$row->field}) as $file)
-                                                                <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
+                                                                <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank" class="btn btn-sm btn-success">
                                                                     Download
                                                                 </a>
                                                                 <br/>
                                                             @endforeach
                                                         @else
-                                                            <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($data->{$row->field}) }}" target="_blank">
+                                                            <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($data->{$row->field}) }}" target="_blank" class="btn btn-sm btn-success">
                                                                 Download
                                                             </a>
                                                         @endif
@@ -343,13 +343,13 @@
                                                         @include('voyager::multilingual.input-hidden-bread-browse')
                                                         @if(json_decode($data->{$row->field}) !== null)
                                                             @foreach(json_decode($data->{$row->field}) as $file)
-                                                                <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank">
+                                                                <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) ?: '' }}" target="_blank" class="btn btn-sm btn-success">
                                                                     Download
                                                                 </a>
                                                                 <br/>
                                                             @endforeach
                                                         @else
-                                                            <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($data->{$row->field}) }}" target="_blank">
+                                                            <a href="{{ Storage::disk(config('voyager.storage.disk'))->url($data->{$row->field}) }}" target="_blank" class="btn btn-sm btn-success">
                                                                 Download
                                                             </a>
                                                         @endif
