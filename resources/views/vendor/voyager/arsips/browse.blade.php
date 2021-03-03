@@ -282,9 +282,9 @@
                                 ])->links() }}
                             </div>
                         @endif
-                        <div style="width: 500px;height: 500px">
+                       {{-- <div style="width: 500px;height: 500px">
                             <canvas id="myChart"></canvas>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             </div>
