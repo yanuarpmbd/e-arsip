@@ -282,6 +282,9 @@
                                 ])->links() }}
                             </div>
                         @endif
+                        <div style="width: 500px;height: 500px">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -388,6 +391,20 @@
                 }
             });
             $('.selected_ids').val(ids);
+        });
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js'></script>
+    <script>
+        var ctx = document.getElementById('myChart');
+        var outputArsip = @json($outputArsip);
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels : [2020, 2019, 2018, 2017],
+                datasets: [{
+                    data: outputArsip
+                }]
+            },
         });
     </script>
 @stop

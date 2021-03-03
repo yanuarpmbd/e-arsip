@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Arsip;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -115,6 +117,15 @@ class ArsipController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
             $model = false;
         }
 
+        $rekapArsips = Arsip::select('tanggal')->get()->groupBy(function ($date){
+            return Carbon::parse($date->tanggal)->format('Y');
+        });
+        $outputArsip = [];
+        foreach ($rekapArsips as $rekapArsip){
+            $outputArsip[] = count($rekapArsip);
+        }
+        //dd($rekapArsips);
+
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($model);
 
@@ -178,7 +189,8 @@ class ArsipController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
             'defaultSearchKey',
             'usesSoftDeletes',
             'showSoftDeleted',
-            'showCheckboxColumn'
+            'showCheckboxColumn',
+            'outputArsip',
         ));
     }
 
