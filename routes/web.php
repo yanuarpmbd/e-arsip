@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['/'], function () {
     Voyager::routes();
+    Route::get('/cetakpdf', 'App\Http\Controllers\ArsipController@cetakpdf');
 });

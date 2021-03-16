@@ -7,6 +7,7 @@
         <h1 class="page-title">
             <i class="{{ $dataType->icon }}"></i> {{ $dataType->getTranslatedAttribute('display_name_plural') }}
         </h1>
+
         @can('add', app($dataType->model_name))
             <a href="{{ route('voyager.'.$dataType->slug.'.create') }}" class="btn btn-success btn-add-new">
                 <i class="voyager-plus"></i> <span>{{ __('voyager::generic.add_new') }}</span>
@@ -33,6 +34,9 @@
             @endif
         @endforeach
         @include('voyager::multilingual.language-selector')
+        <a href="/cetakpdf" class="btn btn-primary btn-blue" target="_blank">
+            <i class="voyager-news"></i> Print PDF
+        </a>
     </div>
 @stop
 

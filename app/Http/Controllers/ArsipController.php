@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Arsip;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -936,5 +937,19 @@ class ArsipController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControlle
 
         // No result found, return empty array
         return response()->json([], 404);
+    }
+    public function cetakpdf(){
+        if(Auth::user()->hasRole('admin_kabkota')){
+            $datas = Arsip::where('kabkota_id', Auth::user()->kabkota_id)->get();
+        }
+        elseif(Auth::user()->hasRole('admin_skpd')) {
+            $datas = Arsip::where('sektor_id', Auth::user()->sektor_id)->get();
+        }
+        else{
+            $datas = Arsip::all();
+        }
+        //dd($datas);
+        $pdf = PDF::loadView('cetakpdf', ['datas'=>$datas]);
+        return $pdf->stream();
     }
 }
